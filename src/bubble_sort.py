@@ -1,29 +1,15 @@
-def find_smallest(items):
-    """Find smallest value in list"""
-    if not len(items):
-        return None
+def bubble_sort(items):
+    """Sort list items by bubble sort"""
+    length = len(items)
+    if len(items) < 2:
+        return items
 
-    smallest_index = 0
+    for i in range(length):
+        for j in range(0, length - i - 1):
+            if items[j] > items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
 
-    for index, item in enumerate(items):
-        if items[smallest_index] > item:
-            smallest_index = index
-
-    return smallest_index
-
-
-assert find_smallest([3, 5, 7, 1, 9]) == 3
-assert find_smallest([]) is None
+    return items
 
 
-def selection_sort(items):
-    """Sort list items by selection sort"""
-    sorted_list = []
-    for i in range(len(items)):
-        smallest = find_smallest(items)
-        sorted_list.append(items.pop(smallest))
-
-    return sorted_list
-
-
-assert selection_sort([3, 5, 7, 1, 9]) == [1, 3, 5, 7, 9]
+assert bubble_sort([3, 5, 7, 1, 9]) == [1, 3, 5, 7, 9]
